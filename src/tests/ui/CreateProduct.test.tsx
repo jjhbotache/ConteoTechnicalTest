@@ -1,5 +1,4 @@
-import React from 'react'
-import { screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import { renderWithProviders } from '../utils/renderWithProviders'
 import CreateProduct from '@/components/global/CreateProduct'
@@ -14,26 +13,26 @@ describe('CreateProduct', () => {
   })
 
   it('renders form fields', () => {
-    renderWithProviders(<CreateProduct />)
-    expect(screen.getByLabelText(/codigo/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/nombre/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/descripcion/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/cantidad/i)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /add product/i })).toBeInTheDocument()
+    const { getByLabelText, getByRole } = renderWithProviders(<CreateProduct />)
+    expect(getByLabelText(/codigo/i)).toBeInTheDocument()
+    expect(getByLabelText(/nombre/i)).toBeInTheDocument()
+    expect(getByLabelText(/descripcion/i)).toBeInTheDocument()
+    expect(getByLabelText(/cantidad/i)).toBeInTheDocument()
+    expect(getByRole('button', { name: /add product/i })).toBeInTheDocument()
   })
 
   it('creates a product and displays in list', async () => {
-    renderWithProviders(<>
+    const { getByLabelText, getByRole, getByText } = renderWithProviders(<>
       <CreateProduct />
       <ProductList />
     </>)
 
-    await userEvent.type(screen.getByLabelText(/codigo/i), '5')
-    await userEvent.type(screen.getByLabelText(/nombre/i), 'TestProduct')
-    await userEvent.type(screen.getByLabelText(/descripcion/i), 'Desc')
-    await userEvent.type(screen.getByLabelText(/cantidad/i), '3')
-    await userEvent.click(screen.getByRole('button', { name: /add product/i }))
+    await userEvent.type(getByLabelText(/codigo/i), '5')
+    await userEvent.type(getByLabelText(/nombre/i), 'TestProduct')
+    await userEvent.type(getByLabelText(/descripcion/i), 'Desc')
+    await userEvent.type(getByLabelText(/cantidad/i), '3')
+    await userEvent.click(getByRole('button', { name: /add product/i }))
 
-    expect(screen.getByText('TestProduct')).toBeInTheDocument()
+    expect(getByText('TestProduct')).toBeInTheDocument()
   })
 })

@@ -1,4 +1,4 @@
-import productsReducer, { addProduct, removeProduct } from './productsSlice'
+import productsReducer, { addProduct, removeProduct, reset } from './productsSlice'
 import { ProductsState, Product } from './productsSlice'
 
 describe('products slice', () => {
@@ -26,5 +26,15 @@ describe('products slice', () => {
 
     expect(nextState.products).toHaveLength(1)
     expect(nextState.products[0].codigo).toBe(2)
+  })
+
+  it('should handle reset', () => {
+    const p1: Product = { codigo: 1, nombre: 'A', descripcion: '', cantidad: 1, creacion: new Date().toISOString() }
+    const p2: Product = { codigo: 2, nombre: 'B', descripcion: '', cantidad: 2, creacion: new Date().toISOString() }
+    const previousState: ProductsState = { products: [p1, p2] }
+    const nextState = productsReducer(previousState, reset())
+
+    expect(nextState.products).toHaveLength(0)
+    expect(nextState.products).toEqual([])
   })
 })
