@@ -89,7 +89,7 @@ const CreateProduct: React.FC = () => {
         </div>
       </div>
       <div>
-        <Button type="submit">Add Product</Button>
+        <Button type="submit">Agregar producto</Button>
       </div>
     </form>
   );

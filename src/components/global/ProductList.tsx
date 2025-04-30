@@ -44,7 +44,7 @@ const ProductList: React.FC = () => {
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="none">None</SelectItem> {/* Cambiar el valor a 'none' */}
+            <SelectItem value="none">Ningún orden</SelectItem> {/* Cambiar el valor a 'none' */}
             <SelectItem value="codigo">Codigo</SelectItem>
             <SelectItem value="nombre">Nombre</SelectItem>
             <SelectItem value="cantidad">Cantidad</SelectItem>
@@ -53,7 +53,7 @@ const ProductList: React.FC = () => {
         </Select>
         <div className="flex-1">
           <Input
-            placeholder="Filter by name"
+            placeholder="Filtrar por nombre"
             value={filter}
             onChange={e => setFilter(e.target.value)}
             className="mt-1 w-full sm:w-64"

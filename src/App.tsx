@@ -9,7 +9,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-background dark:bg-background-dark p-6 flex items-center justify-center">
       <div className="max-w-4xl w-full bg-card p-8 rounded-lg shadow">
         <h1 className="text-4xl font-bold text-center text-gray-800 dark:text-gray-100">
-          Product Manager
+          Administrador de Productos
         </h1>
         <Suspense fallback={<div className="text-center py-4">Loading...</div>}>
           <CreateProduct />
